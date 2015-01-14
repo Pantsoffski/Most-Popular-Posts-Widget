@@ -62,6 +62,8 @@ function choose_style($css_sel) {
 	} elseif($css_sel == 3){
 		return 'style-popular-posts-statistics-3.css';
 	} elseif($css_sel == 4){
+		return 'style-popular-posts-statistics-4.css';
+	} elseif($css_sel == 5){
 		return 'custom.css';
 	}
 }

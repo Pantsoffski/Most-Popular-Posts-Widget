@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Popular Posts Statistics
+Plugin Name: Most Popular Posts Widget
 Plugin URI: http://smartfan.pl/
 Description: Widget which displays statistics of most popular posts based on mumber of visits.
 Author: Piotr Pesta
@@ -107,7 +107,8 @@ function form($instance) {
 	<option value="1" <?php if ($instance['cssselector']==1) {echo "selected"; } ?>>Style no. 1 (color bars)</option>
 	<option value="2" <?php if ($instance['cssselector']==2) {echo "selected"; } ?>>Style no. 2 (color bars + text with white outline)</option>
 	<option value="3" <?php if ($instance['cssselector']==3) {echo "selected"; } ?>>Style no. 3 (grey numbered list)</option>
-	<option value="4" <?php if ($instance['cssselector']==4) {echo "selected"; } ?>>Custom Style (custom.css)</option>
+	<option value="4" <?php if ($instance['cssselector']==4) {echo "selected"; } ?>>Style no. 4 (grey numbered list)</option>
+	<option value="5" <?php if ($instance['cssselector']==5) {echo "selected"; } ?>>Custom Style (custom.css)</option>
 </select>
 </p>
 
