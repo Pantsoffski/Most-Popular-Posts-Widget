@@ -48,7 +48,7 @@ function popular_posts_statistics() {
 function form($instance) {
 
 // nadawanie i łączenie defaultowych wartości
-	$defaults = array('visitstext' => 'visit(s)', 'ignoredcategories' => '', 'ignoredpages' => '', 'hitsonoff' => '1', 'cssselector' => '1', 'numberofdays' => '7', 'posnumber' => '5', 'title' => 'Popular Posts By Views In The Last 7 Days');
+	$defaults = array('cleandatabase' => '', 'visitstext' => 'visit(s)', 'ignoredcategories' => '', 'ignoredpages' => '', 'hitsonoff' => '1', 'cssselector' => '1', 'numberofdays' => '7', 'posnumber' => '5', 'title' => 'Popular Posts By Views In The Last 7 Days');
 	$instance = wp_parse_args( (array) $instance, $defaults );
 ?>
 
@@ -117,6 +117,11 @@ function form($instance) {
 	<input id="<?php echo $this->get_field_id( 'visitstext' ); ?>" name="<?php echo $this->get_field_name( 'visitstext' ); ?>" value="<?php echo $instance['visitstext']; ?>" style="width:100%;" />
 </p>
 
+<p>
+<input type="checkbox" id="<?php echo $this->get_field_id( 'cleandatabase' ); ?>" name="<?php echo $this->get_field_name('cleandatabase'); ?>" value="1" <?php checked($instance['cleandatabase'], 1); ?>/>
+<label for="<?php echo $this->get_field_id( 'cleandatabase' ); ?>"><b>Delete all widget collected data?</b> (Check it only if you feel that database data is too large and makes widget run slow!)</label>
+</p>
+
 <?php
 
 }
@@ -133,6 +138,7 @@ $instance['hitsonoff'] = strip_tags($new_instance['hitsonoff']);
 $instance['ignoredpages'] = strip_tags($new_instance['ignoredpages']);
 $instance['ignoredcategories'] = strip_tags($new_instance['ignoredcategories']);
 $instance['visitstext'] = strip_tags($new_instance['visitstext']);
+$instance['cleandatabase'] = strip_tags($new_instance['cleandatabase']);
 return $instance;
 }
 
@@ -153,7 +159,15 @@ $ignoredcategories = $instance['ignoredcategories'];
 $ignoredcategories = trim(preg_replace('/\s+/', '', $ignoredcategories));
 $ignoredcategories = explode(",",$ignoredcategories);
 $visitstext = $instance['visitstext'];
+$cleandatabase = $instance['cleandatabase'];
 echo $before_widget;
+
+if ($cleandatabase == 1){
+	clean_up_database();
+	$update_options = get_option('widget_popular_posts_statistics');
+	$update_options[2]['cleandatabase'] = '';
+	update_option('widget_popular_posts_statistics', $update_options);
+}
 
 // Sprawdzanie, czy istnieje tytuł
 if ($title) {

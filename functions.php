@@ -68,4 +68,11 @@ function choose_style($css_sel) {
 	}
 }
 
+//kasowanie zawartości bazy danych
+function clean_up_database() {
+	global $wpdb;
+	$popular_posts_statistics_table = $wpdb->prefix . 'popular_posts_statistics';
+	$wpdb->query("TRUNCATE TABLE $popular_posts_statistics_table");
+}
+
 ?>
