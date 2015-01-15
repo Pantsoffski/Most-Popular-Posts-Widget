@@ -19,8 +19,8 @@ function show_views($postID, $posnumber, $numberofdays, $hitsonoff, $ignoredpage
 	$popular_posts_statistics_table = $wpdb->prefix . 'popular_posts_statistics';
 	$posts_table = $wpdb->prefix . 'posts';
 	if ($wpdb->query("SELECT hit_count FROM $popular_posts_statistics_table")) {
-		$result = $wpdb->get_results("SELECT hit_count FROM $popular_posts_statistics_table WHERE date >= CURDATE() - INTERVAL $numberofdays DAY ORDER BY hit_count DESC", ARRAY_A);
-		$post_id_number = $wpdb->get_results("SELECT post_id FROM $popular_posts_statistics_table WHERE date >= CURDATE() - INTERVAL $numberofdays DAY ORDER BY hit_count DESC LIMIT $posnumber", ARRAY_A);
+		$result = $wpdb->get_results("SELECT hit_count FROM $popular_posts_statistics_table WHERE date >= NOW() - INTERVAL $numberofdays DAY ORDER BY hit_count DESC", ARRAY_A);
+		$post_id_number = $wpdb->get_results("SELECT post_id FROM $popular_posts_statistics_table WHERE date >= NOW() - INTERVAL $numberofdays DAY ORDER BY hit_count DESC LIMIT $posnumber", ARRAY_A);
 		echo "<ol>";
 		for ($i = 0; $i < count($post_id_number); ++$i) {
 			$post_number = $post_id_number[$i]['post_id'];

@@ -53,73 +53,73 @@ function form($instance) {
 ?>
 
 <p>
-	<label for="<?php echo $this->get_field_id( 'title' ); ?>">Title:</label>
-	<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:100%;" />
+	<label for="<?php echo $this->get_field_id('title'); ?>">Title:</label>
+	<input id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo $instance['title']; ?>" style="width:100%;" />
 </p>
 
 <p>
-<label for="<?php echo $this->get_field_id( 'posnumber' ); ?>">Number of positions:</label>
-<select id="<?php echo $this->get_field_id( 'posnumber' ); ?>" name="<?php echo $this->get_field_name('posnumber'); ?>" value="<?php echo $instance['posnumber']; ?>" style="width:100%;">	
-	<option value="2" <?php if ($instance['posnumber']==2) {echo "selected"; } ?>>1</option>
-	<option value="3" <?php if ($instance['posnumber']==3) {echo "selected"; } ?>>2</option>
-	<option value="4" <?php if ($instance['posnumber']==4) {echo "selected"; } ?>>3</option>
-	<option value="5" <?php if ($instance['posnumber']==5) {echo "selected"; } ?>>4</option>
-	<option value="6" <?php if ($instance['posnumber']==6) {echo "selected"; } ?>>5</option>
-	<option value="7" <?php if ($instance['posnumber']==7) {echo "selected"; } ?>>6</option>
-	<option value="8" <?php if ($instance['posnumber']==8) {echo "selected"; } ?>>7</option>
-	<option value="9" <?php if ($instance['posnumber']==9) {echo "selected"; } ?>>8</option>
-	<option value="10" <?php if ($instance['posnumber']==10) {echo "selected"; } ?>>9</option>
-	<option value="11" <?php if ($instance['posnumber']==11) {echo "selected"; } ?>>10</option>
+<label for="<?php echo $this->get_field_id('posnumber'); ?>">Number of positions:</label>
+<select id="<?php echo $this->get_field_id('posnumber'); ?>" name="<?php echo $this->get_field_name('posnumber'); ?>" value="<?php echo $instance['posnumber']; ?>" style="width:100%;">	
+	<option value="2" <?php if ($instance['posnumber']==2) {echo "selected";} ?>>1</option>
+	<option value="3" <?php if ($instance['posnumber']==3) {echo "selected";} ?>>2</option>
+	<option value="4" <?php if ($instance['posnumber']==4) {echo "selected";} ?>>3</option>
+	<option value="5" <?php if ($instance['posnumber']==5) {echo "selected";} ?>>4</option>
+	<option value="6" <?php if ($instance['posnumber']==6) {echo "selected";} ?>>5</option>
+	<option value="7" <?php if ($instance['posnumber']==7) {echo "selected";} ?>>6</option>
+	<option value="8" <?php if ($instance['posnumber']==8) {echo "selected";} ?>>7</option>
+	<option value="9" <?php if ($instance['posnumber']==9) {echo "selected";} ?>>8</option>
+	<option value="10" <?php if ($instance['posnumber']==10) {echo "selected";} ?>>9</option>
+	<option value="11" <?php if ($instance['posnumber']==11) {echo "selected";} ?>>10</option>
 </select>
 </p>
 
 <p>
-<label for="<?php echo $this->get_field_id( 'numberofdays' ); ?>">Number of days:</label>
-<select id="<?php echo $this->get_field_id( 'numberofdays' ); ?>" name="<?php echo $this->get_field_name('numberofdays'); ?>" value="<?php echo $instance['numberofdays']; ?>" style="width:100%;">
-	<option value="1" <?php if ($instance['numberofdays']==1) {echo "selected"; } ?>>1</option>
-	<option value="2" <?php if ($instance['numberofdays']==2) {echo "selected"; } ?>>2</option>
-	<option value="3" <?php if ($instance['numberofdays']==3) {echo "selected"; } ?>>3</option>
-	<option value="4" <?php if ($instance['numberofdays']==4) {echo "selected"; } ?>>4</option>
-	<option value="5" <?php if ($instance['numberofdays']==5) {echo "selected"; } ?>>5</option>
-	<option value="6" <?php if ($instance['numberofdays']==6) {echo "selected"; } ?>>6</option>
-	<option value="7" <?php if ($instance['numberofdays']==7) {echo "selected"; } ?>>7</option>
+<label for="<?php echo $this->get_field_id('numberofdays'); ?>">Include posts that where visited in how many last days?</label>
+<select id="<?php echo $this->get_field_id('numberofdays'); ?>" name="<?php echo $this->get_field_name('numberofdays'); ?>" value="<?php echo $instance['numberofdays']; ?>" style="width:100%;">
+	<option value="1" <?php if ($instance['numberofdays']==1) {echo "selected";} ?>>1</option>
+	<option value="2" <?php if ($instance['numberofdays']==2) {echo "selected";} ?>>2</option>
+	<option value="3" <?php if ($instance['numberofdays']==3) {echo "selected";} ?>>3</option>
+	<option value="4" <?php if ($instance['numberofdays']==4) {echo "selected";} ?>>4</option>
+	<option value="5" <?php if ($instance['numberofdays']==5) {echo "selected";} ?>>5</option>
+	<option value="6" <?php if ($instance['numberofdays']==6) {echo "selected";} ?>>6</option>
+	<option value="7" <?php if ($instance['numberofdays']==7) {echo "selected";} ?>>7</option>
 </select>
 </p>
 
 <p>
-<input type="checkbox" id="<?php echo $this->get_field_id( 'hitsonoff' ); ?>" name="<?php echo $this->get_field_name('hitsonoff'); ?>" value="1" <?php checked($instance['hitsonoff'], 1); ?>/>
-<label for="<?php echo $this->get_field_id( 'hitsonoff' ); ?>">Show hit count number?</label>
+<input type="checkbox" id="<?php echo $this->get_field_id('hitsonoff'); ?>" name="<?php echo $this->get_field_name('hitsonoff'); ?>" value="1" <?php checked($instance['hitsonoff'], 1); ?>/>
+<label for="<?php echo $this->get_field_id('hitsonoff'); ?>">Show hit count number?</label>
 </p>
 
 <p>
-	<label for="<?php echo $this->get_field_id( 'ignoredpages' ); ?>">If you would like to exclude any pages from being displayed, you can enter the Page IDs (comma separated, e.g. 34, 25, 439):</label>
-	<input id="<?php echo $this->get_field_id( 'ignoredpages' ); ?>" name="<?php echo $this->get_field_name( 'ignoredpages' ); ?>" value="<?php echo $instance['ignoredpages']; ?>" style="width:100%;" />
+	<label for="<?php echo $this->get_field_id('ignoredpages'); ?>">If you would like to exclude any pages from being displayed, you can enter the Page IDs (comma separated, e.g. 34, 25, 439):</label>
+	<input id="<?php echo $this->get_field_id('ignoredpages'); ?>" name="<?php echo $this->get_field_name('ignoredpages'); ?>" value="<?php echo $instance['ignoredpages']; ?>" style="width:100%;" />
 </p>
 
 <p>
-	<label for="<?php echo $this->get_field_id( 'ignoredcategories' ); ?>">If you would like to exclude any categories from being displayed, you can enter the Category IDs (comma separated, e.g. 3, 5, 10):</label>
-	<input id="<?php echo $this->get_field_id( 'ignoredcategories' ); ?>" name="<?php echo $this->get_field_name( 'ignoredcategories' ); ?>" value="<?php echo $instance['ignoredcategories']; ?>" style="width:100%;" />
+	<label for="<?php echo $this->get_field_id('ignoredcategories'); ?>">If you would like to exclude any categories from being displayed, you can enter the Category IDs (comma separated, e.g. 3, 5, 10):</label>
+	<input id="<?php echo $this->get_field_id('ignoredcategories'); ?>" name="<?php echo $this->get_field_name('ignoredcategories'); ?>" value="<?php echo $instance['ignoredcategories']; ?>" style="width:100%;" />
 </p>
 
 <p>
-<label for="<?php echo $this->get_field_id( 'cssselector' ); ?>">Style Select:</label>
-<select id="<?php echo $this->get_field_id( 'cssselector' ); ?>" name="<?php echo $this->get_field_name('cssselector'); ?>" value="<?php echo $instance['cssselector']; ?>" style="width:100%;">	
-	<option value="1" <?php if ($instance['cssselector']==1) {echo "selected"; } ?>>Style no. 1 (color bars)</option>
-	<option value="2" <?php if ($instance['cssselector']==2) {echo "selected"; } ?>>Style no. 2 (color bars + text with white outline)</option>
-	<option value="3" <?php if ($instance['cssselector']==3) {echo "selected"; } ?>>Style no. 3 (grey numbered list)</option>
-	<option value="4" <?php if ($instance['cssselector']==4) {echo "selected"; } ?>>Style no. 4 (grey numbered list)</option>
-	<option value="5" <?php if ($instance['cssselector']==5) {echo "selected"; } ?>>Custom Style (custom.css)</option>
+<label for="<?php echo $this->get_field_id('cssselector'); ?>">Style Select:</label>
+<select id="<?php echo $this->get_field_id('cssselector'); ?>" name="<?php echo $this->get_field_name('cssselector'); ?>" value="<?php echo $instance['cssselector']; ?>" style="width:100%;">	
+	<option value="1" <?php if ($instance['cssselector']==1) {echo "selected";} ?>>Style no. 1 (color bars)</option>
+	<option value="2" <?php if ($instance['cssselector']==2) {echo "selected";} ?>>Style no. 2 (color bars + text with white outline)</option>
+	<option value="3" <?php if ($instance['cssselector']==3) {echo "selected";} ?>>Style no. 3 (grey numbered list)</option>
+	<option value="4" <?php if ($instance['cssselector']==4) {echo "selected";} ?>>Style no. 4 (grey numbered list)</option>
+	<option value="5" <?php if ($instance['cssselector']==5) {echo "selected";} ?>>Custom Style (custom.css)</option>
 </select>
 </p>
 
 <p>
-	<label for="<?php echo $this->get_field_id( 'visitstext' ); ?>">If you would like to change "visit(s)" text, you can do it here:</label>
-	<input id="<?php echo $this->get_field_id( 'visitstext' ); ?>" name="<?php echo $this->get_field_name( 'visitstext' ); ?>" value="<?php echo $instance['visitstext']; ?>" style="width:100%;" />
+	<label for="<?php echo $this->get_field_id('visitstext'); ?>">If you would like to change "visit(s)" text, you can do it here:</label>
+	<input id="<?php echo $this->get_field_id('visitstext'); ?>" name="<?php echo $this->get_field_name('visitstext'); ?>" value="<?php echo $instance['visitstext']; ?>" style="width:100%;" />
 </p>
 
 <p>
-<input type="checkbox" id="<?php echo $this->get_field_id( 'cleandatabase' ); ?>" name="<?php echo $this->get_field_name('cleandatabase'); ?>" value="1" <?php checked($instance['cleandatabase'], 1); ?>/>
-<label for="<?php echo $this->get_field_id( 'cleandatabase' ); ?>"><b>Delete all widget collected data?</b> (Check it only if you feel that database data is too large and makes widget run slow!)</label>
+<input type="checkbox" id="<?php echo $this->get_field_id('cleandatabase'); ?>" name="<?php echo $this->get_field_name('cleandatabase'); ?>" value="1" <?php checked($instance['cleandatabase'], 1); ?>/>
+<label for="<?php echo $this->get_field_id('cleandatabase'); ?>"><b>Delete all widget collected data?</b> (Check it only if you feel that database data is too large and makes widget run slow!)</label>
 </p>
 
 <?php
