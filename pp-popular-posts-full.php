@@ -110,8 +110,10 @@ function form($instance) {
 	<option value="1" <?php if ($instance['cssselector']==1) {echo "selected";} ?>>Style no. 1 (color bars)</option>
 	<option value="2" <?php if ($instance['cssselector']==2) {echo "selected";} ?>>Style no. 2 (color bars + text with white outline)</option>
 	<option value="3" <?php if ($instance['cssselector']==3) {echo "selected";} ?>>Style no. 3 (grey numbered list)</option>
-	<option value="4" <?php if ($instance['cssselector']==4) {echo "selected";} ?>>Style no. 4 (grey numbered list)</option>
-	<option value="5" <?php if ($instance['cssselector']==5) {echo "selected";} ?>>Custom Style (custom.css)</option>
+	<option value="4" <?php if ($instance['cssselector']==4) {echo "selected";} ?>>Style no. 4 (grey list with numbers in blue circle)</option>
+	<option value="5" <?php if ($instance['cssselector']==5) {echo "selected";} ?>>Style no. 5 (grey list with red numbers)</option>
+	<option value="6" <?php if ($instance['cssselector']==6) {echo "selected";} ?>>Style no. 6 (simple grey list with grey numbers)</option>
+	<option value="7" <?php if ($instance['cssselector']==7) {echo "selected";} ?>>Custom Style (custom.css)</option>
 </select>
 </p>
 

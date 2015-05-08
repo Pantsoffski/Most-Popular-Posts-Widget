@@ -16,12 +16,11 @@
 #pp-container a {
     position: relative;
     display: block;
-    padding: .4em .4em .4em 2em;
-    margin: .5em 0;
+    padding: .4em .4em .4em .8em;
+    margin: .5em 0 .5em 2.5em;
     background: #ddd;
     color: #444;
     text-decoration: none;
-    border-radius: .3em;
     transition: all .3s ease-out;   
 }
 
@@ -33,18 +32,30 @@
 	content: counter(li);
 	counter-increment: li;
     position: absolute; 
-    left: -1.3em;
+    left: -2.5em;
     top: 50%;
-    margin-top: -1.3em;
-    background: #87ceeb;
+    margin-top: -1em;
+    background: #fa8072;
     height: 2em;
     width: 2em;
     line-height: 2em;
-    border: .3em solid #fff;
     text-align: center;
     font-weight: bold;
-    border-radius: 2em;
+}
+
+#pp-container a:after {
+    position: absolute; 
+    content: '';
+    border: .5em solid transparent;
+    left: -1em;
+    top: 50%;
+    margin-top: -.5em;
     transition: all .3s ease-out;
+}
+
+#pp-container a:hover:after {
+    left: -.5em;
+    border-left-color: #fa8072;
 }
 
 #pp-count {
