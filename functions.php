@@ -1,19 +1,19 @@
 <?php
 
-//zbieranie danych
+// data gathering
 function add_views($postID) {
 	global $wpdb;
 	$popular_posts_statistics_table = $wpdb->prefix . 'popular_posts_statistics';
-	if (!$wpdb->query("SELECT hit_count FROM $popular_posts_statistics_table WHERE post_id = $postID") && $postID != 1 && !preg_match('/bot|spider|crawler|slurp|curl|^$/i', $_SERVER['HTTP_USER_AGENT'])) { //jeśli nie istnieje rekord hit_count z podanym ID oraz ID nie jest równe 1 oraz odwiedzający nie jest botem
-		$result = $wpdb->query("INSERT INTO $popular_posts_statistics_table (post_id, hit_count, date) VALUES ($postID, 1, NOW())"); //dodaje do tablicy id postu, date oraz hit
-	}elseif ($postID != 1 && !preg_match('/bot|spider|crawler|slurp|curl|^$/i', $_SERVER['HTTP_USER_AGENT'])) { //w innym przypadku...
+	if (!$wpdb->query("SELECT hit_count FROM $popular_posts_statistics_table WHERE post_id = $postID") && $postID != 1 && !preg_match('/bot|spider|crawler|slurp|curl|^$/i', $_SERVER['HTTP_USER_AGENT'])) { // if hit_count with ID doesn't exists and ID is not equal to 1 and visitor is not a bot, proceed
+		$result = $wpdb->query("INSERT INTO $popular_posts_statistics_table (post_id, hit_count, date) VALUES ($postID, 1, NOW())"); // adds to tablle post ID, date and hit count
+	}elseif ($postID != 1 && !preg_match('/bot|spider|crawler|slurp|curl|^$/i', $_SERVER['HTTP_USER_AGENT'])) {
 		$hitsnumber = $wpdb->get_results("SELECT hit_count FROM $popular_posts_statistics_table WHERE post_id = $postID", ARRAY_A);
 		$hitsnumber = $hitsnumber[0]['hit_count'];
 		$result = $wpdb->query("UPDATE $popular_posts_statistics_table SET hit_count = $hitsnumber + 1, date =  NOW() WHERE post_id = $postID");
 	}
 }
 
-//wyświetlanie wyników
+// results displaying
 function show_views($postID, $posnumber, $numberofdays, $hitsonoff, $ignoredpages, $ignoredcategories, $visitstext) {
 	global $wpdb;
 	$popular_posts_statistics_table = $wpdb->prefix . 'popular_posts_statistics';
@@ -24,25 +24,25 @@ function show_views($postID, $posnumber, $numberofdays, $hitsonoff, $ignoredpage
 		echo "<ol>";
 		for ($i = 0; $i < count($post_id_number); ++$i) {
 			$post_number = $post_id_number[$i]['post_id'];
-			$post_link = get_permalink($post_number); //zdobywanie permalinka
+			$post_link = get_permalink($post_number); // get permalink from wordpress database
 			$countbeginning = "<br /><span id=\"pp-count\">";
 			$countending = "</span></span></li><br />";
 			$cat_id = get_the_category($post_number);
 			$post_cat_id = $cat_id[0]->cat_ID;
 			$post_name_by_id = $wpdb->get_results("SELECT post_title FROM $posts_table WHERE ID = $post_number", ARRAY_A);
-			if (!$post_name_by_id){ //sprawdza, czy post o danym ID istnieje, jeśli nie - kasuje rekord i przerywa skrypt (który by wyświetlał błąd w pierwszej linii)
+			if (!$post_name_by_id){ // checks whether post with this ID exists, if not - delete record and break script
 				$wpdb->query("DELETE FROM $popular_posts_statistics_table WHERE post_id = $post_number");
 				break;
 			}
-			if (in_array($post_cat_id, $ignoredcategories) || in_array($post_number, $ignoredpages)) { //sprawdza, czy postu i jego kategorii nie ma na liście banów
+			if (in_array($post_cat_id, $ignoredcategories) || in_array($post_number, $ignoredpages)) { // checks whether post ID or his category ID is not excluded by user
 				$cat_or_post_check = TRUE;
 			}else {
 				$cat_or_post_check = FALSE;
 			}
 			if ($cat_or_post_check == FALSE) {
-				static $x = 0; //static powoduje, że wartość x po skońćzeniu pętli nie jest zerowana
+				static $x = 0; // static mamkes $x variable is not nulled after end of loop
 				echo '<li><span id="pp-' . $x++ . '-title">' . '<a href="' . $post_link . '">' . $post_name_by_id[0]['post_title'] . '</a>';
-				if ($hitsonoff) { //wyłącza wyświetlanie liczby odsłon, jeśli użytkownik wyłączył taką opcję
+				if ($hitsonoff) { // if user turned on displaying number of visits
 				echo $countbeginning . $result[$i]['hit_count'] . " " . $visitstext . $countending;
 				}else {
 					echo "</span></li><br />";
@@ -53,7 +53,7 @@ function show_views($postID, $posnumber, $numberofdays, $hitsonoff, $ignoredpage
 	}
 }
 
-//wybór stylu
+// style selection
 function choose_style($css_sel) {
 	if($css_sel == 1){
 		return 'style-popular-posts-statistics-1.css';
@@ -72,7 +72,7 @@ function choose_style($css_sel) {
 	}
 }
 
-//kasowanie zawartości bazy danych
+// function responsible for delete of popular_posts_statistics table from database
 function clean_up_database() {
 	global $wpdb;
 	$popular_posts_statistics_table = $wpdb->prefix . 'popular_posts_statistics';

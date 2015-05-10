@@ -16,7 +16,7 @@ $options = get_option('widget_popular_posts_statistics');
 register_activation_hook(__FILE__, 'popular_posts_statistics_activate'); //akcja podczas aktywacji pluginu
 register_uninstall_hook(__FILE__, 'popular_posts_statistics_uninstall'); //akcja podczas deaktywacji pluginu
 
-// instalacja i zakładanie tabeli w mysql
+// installation and mysql table creation
 function popular_posts_statistics_activate() {
 	global $wpdb;
 	$popular_posts_statistics_table = $wpdb->prefix . 'popular_posts_statistics';
@@ -28,7 +28,7 @@ function popular_posts_statistics_activate() {
 		);");
 }
 
-// podczas odinstalowania - usuwanie tabeli
+// if uninstalling - remove mysql table
 function popular_posts_statistics_uninstall() {
 	global $wpdb;
 	$popular_posts_statistics_table = $wpdb->prefix . 'popular_posts_statistics';
@@ -38,14 +38,14 @@ function popular_posts_statistics_uninstall() {
 
 class popular_posts_statistics extends WP_Widget {
 
-// konstruktor widgetu
+// widget constructor
 function popular_posts_statistics() {
 
 	$this->WP_Widget(false, $name = __('Popular Posts Statistics', 'wp_widget_plugin'));
 
 }
 
-// tworzenie widgetu, back end (form)
+// widget back end (UI)
 function form($instance) {
 
 // nadawanie i łączenie defaultowych wartości
@@ -134,7 +134,7 @@ function form($instance) {
 function update($new_instance, $old_instance) {
 $instance = $old_instance;
 
-// Dostępne pola
+// available fields
 $instance['title'] = strip_tags($new_instance['title']);
 $instance['posnumber'] = strip_tags($new_instance['posnumber']);
 $instance['numberofdays'] = strip_tags($new_instance['numberofdays']);
@@ -147,11 +147,10 @@ $instance['cleandatabase'] = strip_tags($new_instance['cleandatabase']);
 return $instance;
 }
 
-// wyswietlanie widgetu, front end (widget)
+// widget front end
 function widget($args, $instance) {
 extract($args);
 
-// to są funkcje widgetu
 $title = apply_filters('widget_title', $instance['title']);
 $posnumber = $instance['posnumber'];
 $numberofdays = $instance['numberofdays'];
@@ -167,6 +166,7 @@ $visitstext = $instance['visitstext'];
 $cleandatabase = $instance['cleandatabase'];
 echo $before_widget;
 
+// table clean up if user decided
 if ($cleandatabase == 1){
 	clean_up_database();
 	$update_options = get_option('widget_popular_posts_statistics');
@@ -174,7 +174,7 @@ if ($cleandatabase == 1){
 	update_option('widget_popular_posts_statistics', $update_options);
 }
 
-// Sprawdzanie, czy istnieje tytuł
+// title check
 if ($title) {
 echo $before_title . $title . $after_title;
 }
@@ -191,16 +191,16 @@ echo $after_widget;
 }
 }
 
-// rejestracja widgetu
+// widget registration
 add_action('widgets_init', create_function('', 'return register_widget("popular_posts_statistics");'));
 
 add_action('wp_enqueue_scripts', function () {
-	$css_select = get_option('widget_popular_posts_statistics'); //pobieranie opcji z bazy danych
+	$css_select = get_option('widget_popular_posts_statistics'); // choose CSS file
 	$css_sel = array();
 	foreach($css_select as $css_selector){
 		$css_sel[] = $css_selector['cssselector'];
 	}
-	wp_enqueue_style('popular_posts_statistics', plugins_url(choose_style($css_sel[0]), __FILE__)); //nazwa pliku uzależniona od funkcji i aktualnie obowiązującej opcji
+	wp_enqueue_style('popular_posts_statistics', plugins_url(choose_style($css_sel[0]), __FILE__)); // CSS file selector
     });
 
 ?>
