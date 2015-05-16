@@ -2,7 +2,7 @@
 /*
 Plugin Name: Most Popular Posts Widget
 Plugin URI: http://smartfan.pl/
-Description: Widget which displays statistics of most popular posts based on mumber of visits.
+Description: Most Popular Posts is a widget that is able to display a list of the most popular posts visited by the readers of your site.
 Author: Piotr Pesta
 Version: 1.0.0
 Author URI: http://smartfan.pl/
@@ -13,8 +13,8 @@ include 'functions.php';
 
 $options = get_option('widget_popular_posts_statistics');
 
-register_activation_hook(__FILE__, 'popular_posts_statistics_activate'); //akcja podczas aktywacji pluginu
-register_uninstall_hook(__FILE__, 'popular_posts_statistics_uninstall'); //akcja podczas deaktywacji pluginu
+register_activation_hook(__FILE__, 'popular_posts_statistics_activate');
+register_uninstall_hook(__FILE__, 'popular_posts_statistics_uninstall');
 
 // installation and mysql table creation
 function popular_posts_statistics_activate() {
