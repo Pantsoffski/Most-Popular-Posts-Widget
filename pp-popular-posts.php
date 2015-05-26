@@ -114,7 +114,34 @@ function form($instance) {
 	<option value="5" <?php if ($instance['cssselector']==5) {echo "selected";} ?>>Style no. 5 (grey list with red numbers)</option>
 	<option value="6" <?php if ($instance['cssselector']==6) {echo "selected";} ?>>Style no. 6 (simple grey list with grey numbers)</option>
 	<option value="7" <?php if ($instance['cssselector']==7) {echo "selected";} ?>>Custom Style (custom.css)</option>
+	<?php 
+		if(file_exists(plugin_dir_path(__FILE__).'style-popular-posts-statistics-7-premium.css')){
+	?>		<option value="8" <?php if ($instance['cssselector']==8) {echo "selected";} ?>>Style no. 7 (premium)</option>
+	<?php
+			}
+		if(file_exists(plugin_dir_path(__FILE__).'style-popular-posts-statistics-8-premium.css')){
+	?>		<option value="9" <?php if ($instance['cssselector']==9) {echo "selected";} ?>>Style no. 8 (premium)</option>
+	<?php
+			}
+		if(file_exists(plugin_dir_path(__FILE__).'style-popular-posts-statistics-9-premium.css')){
+	?>		<option value="10" <?php if ($instance['cssselector']==10) {echo "selected";} ?>>Style no. 9 (premium)</option>
+	<?php
+			}
+		if(file_exists(plugin_dir_path(__FILE__).'style-popular-posts-statistics-10-premium.css')){
+	?>		<option value="11" <?php if ($instance['cssselector']==11) {echo "selected";} ?>>Style no. 10 (premium)</option>
+	<?php
+			}
+		if(file_exists(plugin_dir_path(__FILE__).'style-popular-posts-statistics-11-premium.css')){
+	?>		<option value="12" <?php if ($instance['cssselector']==12) {echo "selected";} ?>>Style no. 11 (premium)</option>
+	<?php
+			}
+		if(file_exists(plugin_dir_path(__FILE__).'style-popular-posts-statistics-12-premium.css')){
+	?>		<option value="13" <?php if ($instance['cssselector']==13) {echo "selected";} ?>>Style no. 12 (premium)</option>
+	<?php
+			}
+	?>
 </select>
+<p><b><a href="http://smartfan.pl">For as little as $1 you can buy new premium styles, just follow this link for more instructions.</a></b></p>
 </p>
 
 <p>

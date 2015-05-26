@@ -69,6 +69,18 @@ function choose_style($css_sel) {
 		return 'style-popular-posts-statistics-6.css';
 	} elseif($css_sel == 7){
 		return 'custom.css';
+	} elseif($css_sel == 8){
+		return 'style-popular-posts-statistics-7-premium.css';
+	} elseif($css_sel == 9){
+		return 'style-popular-posts-statistics-8-premium.css';
+	} elseif($css_sel == 10){
+		return 'style-popular-posts-statistics-9-premium.css';
+	} elseif($css_sel == 11){
+		return 'style-popular-posts-statistics-10-premium.css';
+	} elseif($css_sel == 12){
+		return 'style-popular-posts-statistics-11-premium.css';
+	} elseif($css_sel == 13){
+		return 'style-popular-posts-statistics-12-premium.css';
 	}
 }
 
