@@ -63,6 +63,9 @@ function show_views($postID, $posnumber, $numberofdays, $hitsonoff, $ignoredpage
 			$cat_id = get_the_category($post_number);
 			$post_cat_id = $cat_id[0]->cat_ID;
 			$post_name_by_id = $wpdb->get_results("SELECT post_title FROM $posts_table WHERE ID = $post_number", ARRAY_A);
+			if($result[$i]['comment_count'] == 0) {
+				break;
+			}
 			if (in_array($post_cat_id, $ignoredcategories) || in_array($post_number, $ignoredpages)) { // checks whether post ID or his category ID is not excluded by user
 				$cat_or_post_check = TRUE;
 			}else {

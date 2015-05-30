@@ -119,7 +119,11 @@ function form($instance) {
 
 <p>
 <label for="<?php echo $this->get_field_id('cssselector'); ?>">Style Select:</label>
-<select id="<?php echo $this->get_field_id('cssselector'); ?>" name="<?php echo $this->get_field_name('cssselector'); ?>" value="<?php echo $instance['cssselector']; ?>" style="width:100%;">	
+<select id="<?php echo $this->get_field_id('cssselector'); ?>" name="<?php echo $this->get_field_name('cssselector'); ?>" value="<?php echo $instance['cssselector']; ?>" style="width:100%;" onchange="
+	if (this.options[this.selectedIndex].value == 'http://smartfan.pl/most-popular-posts-widget-premium-styles/') {
+		window.open( this.options[ this.selectedIndex ].value, '_blank');
+	}
+">
 	<option value="1" <?php if ($instance['cssselector']==1) {echo "selected";} ?>>Standard Style No. 1 (color bars)</option>
 	<option value="2" <?php if ($instance['cssselector']==2) {echo "selected";} ?>>Standard Style No. 2 (color bars + text with white outline)</option>
 	<option value="3" <?php if ($instance['cssselector']==3) {echo "selected";} ?>>Standard Style No. 3 (grey numbered list)</option>
@@ -153,9 +157,8 @@ function form($instance) {
 	<?php
 			}
 	?>
+	<option value="http://smartfan.pl/most-popular-posts-widget-premium-styles/">Buy more styles (for $1 only!)</option>
 </select>
-<p><b><a href="http://smartfan.pl/most-popular-posts-widget-premium-styles/" target="_blank">For as little as $1 you can buy beautiful Premium Styles, just click this link for more instructions.</a></b></p>
-</p>
 
 <p>
 	<label for="<?php echo $this->get_field_id('visitstext'); ?>">If you would like to change "visit(s)" text, you can do it here:</label>
