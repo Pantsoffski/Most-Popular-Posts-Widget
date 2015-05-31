@@ -40,8 +40,7 @@ function show_views($postID, $posnumber, $numberofdays, $hitsonoff, $ignoredpage
 				$cat_or_post_check = FALSE;
 			}
 			if ($cat_or_post_check == FALSE) {
-				static $x = 0; // static mamkes $x variable is not nulled after end of loop
-				echo '<li><span id="pp-' . $x++ . '-title">' . '<a href="' . $post_link . '">' . $post_name_by_id[0]['post_title'] . '</a>';
+				echo '<li><span id="pp-' . $i . '-title">' . '<a href="' . $post_link . '">' . $post_name_by_id[0]['post_title'] . '</a>';
 				if ($hitsonoff) { // if user turned on displaying number of visits
 				echo $countbeginning . $result[$i]['hit_count'] . " " . $visitstext . $countending;
 				}else {
@@ -72,8 +71,7 @@ function show_views($postID, $posnumber, $numberofdays, $hitsonoff, $ignoredpage
 				$cat_or_post_check = FALSE;
 			}
 			if ($cat_or_post_check == FALSE) {
-				static $x = 0; // static mamkes $x variable is not nulled after end of loop
-				echo '<li><span id="pp-' . $x++ . '-title">' . '<a href="' . $post_link . '">' . $post_name_by_id[0]['post_title'] . '</a>';
+				echo '<li><span id="pp-' . $i . '-title">' . '<a href="' . $post_link . '">' . $post_name_by_id[0]['post_title'] . '</a>';
 				if ($hitsonoff) { // if user turned on displaying number of visits
 				echo $countbeginning . $result[$i]['comment_count'] . " " . $visitstext . $countending;
 				}else {
