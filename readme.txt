@@ -7,7 +7,7 @@ Tags: widget, bars, pupular, pupularity, visits, counter
 Author: Piotr Pesta
 Requires at least: 2.8.0
 Tested up to: 4.3
-Stable tag: 1.1.2
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,6 +29,7 @@ If you are worried about your server's resources, I can assure you that the widg
 * Change translation
 * Change the appearance of the widget (you can choose from 6 ready styles or create your own (file custom.css), along with subsequent updates of the number of available styles will increase)
 * Clean the widget data from SQL database (if you decide that take too much)
+* Cache refresh time
 
 In addition, the widget has a built-in filtering visits robots, so that the collected data do not include web bots. Widget styles perfectly cope with the parties and look great on mobile devices. Widget also support shortcode [most-popular-posts].
 
@@ -65,13 +66,16 @@ If you wish to show widget in post first set up widget options and save them. Af
 9. Widget visible in right column.
 
 == Changelog ==
+= 1.2.0 =
+* Caching added, now widget is faster
+* Minor bug fixes
 = 1.1.2 =
 * Wordpress 4.3 compatibility
 = 1.1.1 =
-* Shortcode bugfix
+* Shortcode bug fix
 = 1.1.0 =
 * Shortcode support
-* Minor bugs fixes
+* Minor bug fixes
 = 1.0.1 =
 * Ability to rank posts by number of comments
 * Now you can buy premium styles for this plugin

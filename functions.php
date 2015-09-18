@@ -18,10 +18,11 @@ function show_views($postID, $posnumber, $numberofdays, $hitsonoff, $ignoredpage
 	global $wpdb;
 	$popular_posts_statistics_table = $wpdb->prefix . 'popular_posts_statistics';
 	$posts_table = $wpdb->prefix . 'posts';
+	$to_return = '';
 	if ($wpdb->query("SELECT hit_count FROM $popular_posts_statistics_table") && $commentsorvisits == 1) {
 		$result = $wpdb->get_results("SELECT hit_count FROM $popular_posts_statistics_table WHERE date >= NOW() - INTERVAL $numberofdays DAY ORDER BY hit_count DESC LIMIT $posnumber", ARRAY_A);
 		$post_id_number = $wpdb->get_results("SELECT post_id FROM $popular_posts_statistics_table WHERE date >= NOW() - INTERVAL $numberofdays DAY ORDER BY hit_count DESC LIMIT $posnumber", ARRAY_A);
-		echo "<ol>";
+		$to_return = "<ol>";
 		for ($i = 0; $i < count($post_id_number); ++$i) {
 			$post_number = $post_id_number[$i]['post_id'];
 			$post_link = get_permalink($post_number); // get permalink from wordpress database
@@ -40,20 +41,20 @@ function show_views($postID, $posnumber, $numberofdays, $hitsonoff, $ignoredpage
 				$cat_or_post_check = FALSE;
 			}
 			if ($cat_or_post_check == FALSE) {
-				echo '<li><span id="pp-' . $i . '-title">' . '<a href="' . $post_link . '">' . $post_name_by_id[0]['post_title'] . '</a>';
+				$to_return .= '<li><span id="pp-' . $i . '-title">' . '<a href="' . $post_link . '">' . $post_name_by_id[0]['post_title'] . '</a>';
 				if ($hitsonoff) { // if user turned on displaying number of visits
-				echo $countbeginning . $result[$i]['hit_count'] . " " . $visitstext . $countending;
+				$to_return .= $countbeginning . $result[$i]['hit_count'] . " " . $visitstext . $countending;
 				}else {
-					echo "</span></li><br />";
+					$to_return .= "</span></li><br />";
 				}
 			}
 		}
-		echo "</ol>";
+		$to_return .= "</ol>";
 	}elseif($commentsorvisits == 2) { //If user wants rank by comment count
 		$posnumber = $posnumber - 1;
 		$result = $wpdb->get_results("SELECT comment_count FROM $posts_table WHERE post_date >= NOW() - INTERVAL $numberofdays DAY ORDER BY comment_count DESC LIMIT $posnumber", ARRAY_A);
 		$post_id_number = $wpdb->get_results("SELECT ID FROM $posts_table WHERE post_date >= NOW() - INTERVAL $numberofdays DAY ORDER BY comment_count DESC LIMIT $posnumber", ARRAY_A);
-		echo "<ol>";
+		$to_return .= "<ol>";
 		for ($i = 0; $i < count($post_id_number); ++$i) {
 			$post_number = $post_id_number[$i]['ID'];
 			$post_link = get_permalink($post_number); // get permalink from wordpress database
@@ -71,16 +72,17 @@ function show_views($postID, $posnumber, $numberofdays, $hitsonoff, $ignoredpage
 				$cat_or_post_check = FALSE;
 			}
 			if ($cat_or_post_check == FALSE) {
-				echo '<li><span id="pp-' . $i . '-title">' . '<a href="' . $post_link . '">' . $post_name_by_id[0]['post_title'] . '</a>';
+				$to_return .= '<li><span id="pp-' . $i . '-title">' . '<a href="' . $post_link . '">' . $post_name_by_id[0]['post_title'] . '</a>';
 				if ($hitsonoff) { // if user turned on displaying number of visits
-				echo $countbeginning . $result[$i]['comment_count'] . " " . $visitstext . $countending;
+					$to_return .= $countbeginning . $result[$i]['comment_count'] . " " . $visitstext . $countending;
 				}else {
-					echo "</span></li><br />";
+					$to_return .= "</span></li><br />";
 				}
 			}
 		}
-		echo "</ol>";
+		$to_return .= "</ol>";
 		}
+	return $to_return;
 }
 
 // style selection
